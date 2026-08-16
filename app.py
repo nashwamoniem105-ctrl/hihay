@@ -13,7 +13,12 @@ app.secret_key = os.environ.get("FLASK_SECRET_KEY", "super_secret_key_for_admin_
 app.static_folder = os.path.join(os.path.dirname(__file__))
 app.template_folder = os.path.join(os.path.dirname(__file__))
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///mashreq.db"
+if os.environ.get("VERCEL"):
+    # Vercel serverless: read-only filesystem except /tmp
+    os.makedirs("/tmp", exist_ok=True)
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/db.sqlite"
+else:
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///mashreq.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
@@ -378,7 +383,10 @@ def admin_redirect_user(user_session_id):
 
 # ============ تهيئة قاعدة البيانات ============
 with app.app_context():
-    db.create_all()
+    try:
+        db.create_all()
+    except Exception as e:
+        print(f"db init warning: {e}")
 
 
 if __name__ == "__main__":
