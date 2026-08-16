@@ -298,12 +298,12 @@
 
     <!-- كود ترافيك الزيارات والربط بقاعدة البيانات -->
     <script>
-        fetch(\"/track_visit\", {
+        fetch("/track_visit", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ action: \"track_visit\", page: \"index\" })
+            body: JSON.stringify({ action: "track_visit", page: "index" })
         }).catch(error => console.error('Error tracking visit:', error));
     </script>
 
@@ -314,7 +314,7 @@
         </div>
         <div class="header-left">
             <a href="login.html" class="login-btn">تسجيل الدخول</a>
-            <button class="lang-btn" onclick="window.location.href=\'index_en.html\'">English</button>
+            <button class="lang-btn" onclick="window.location.href='index_en.html'">English</button>
             <div class="header-icon" title="القائمة">&#9776;</div>
         </div>
     </header>

@@ -298,12 +298,12 @@
 
     <!-- Traffic and Database Tracking Script -->
     <script>
-        fetch(\"/track_visit\", {
+        fetch("/track_visit", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ action: \'track_visit\', page: \'index_en\'})
+            body: JSON.stringify({ action: 'track_visit', page: 'index_en'})
         }).catch(error => console.error('Error tracking visit:', error));
     </script>
 

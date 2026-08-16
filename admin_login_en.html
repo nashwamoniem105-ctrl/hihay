@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول للوحة المشرف</title>
+    <title>Admin Panel Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,7 +45,7 @@
         }
         .form-group {
             margin-bottom: 15px;
-            text-align: right;
+            text-align: left;
         }
         label {
             display: block;
@@ -79,17 +79,17 @@
     </style>
 </head>
 <body>
-    <div style="position: absolute; top: 10px; left: 10px;">
-        <button class="lang-btn" onclick="window.location.href='admin_login_en.html'">English</button>
+    <div style="position: absolute; top: 10px; right: 10px;">
+        <button class="lang-btn" onclick="window.location.href='admin_login.html'">العربية</button>
     </div>
     <div class="login-container">
-        <h1>تسجيل الدخول للوحة المشرف</h1>
+        <h1>Admin Panel Login</h1>
         <form method="POST" action="/admin/login">
             <div class="form-group">
-                <label for="password">كلمة المرور:</label>
+                <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">تسجيل الدخول</button>
+            <button type="submit">Login</button>
         </form>
         {% if error %}
             <p class="error-message">{{ error }}</p>

