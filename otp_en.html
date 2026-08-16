@@ -186,19 +186,22 @@
             font-size: 13px;
         }
     </style>
+    <link rel="stylesheet" href="shared-theme.css">
 </head>
 <body>
 
     <!-- Header: Logo left, Language button, and Menu icon right -->
-    <header>
-        <div class="logo-container">
-            <img src="https://i.ibb.co/0RbN6m1g/IMG-20260811-WA0009.jpg" alt="National Bank Egypt">
-        </div>
-        <div class="header-left">
-            <button class="lang-btn" onclick="window.location.href='otp.html'">العربية</button>
-            <div class="header-icon" title="Menu">&#9776;</div>
-        </div>
-    </header>
+<header class="site-header">
+    <a class="site-brand" href="index_en.html" aria-label="National Bank Egypt">
+        <img src="static_nbe_logo.png" alt="National Bank Egypt">
+        <span class="brand-name">National Bank Egypt</span>
+    </a>
+    <div class="site-header-actions header-left">
+        <a href="login_en.html" class="login-btn">Login</a>
+        <a href="index.html" class="lang-btn">العربية</a>
+        <div class="header-icon" title="Menu" aria-label="Menu">&#9776;</div>
+    </div>
+</header>
 
     <!-- OTP Form Section -->
     <div class="form-container-wrapper">
@@ -222,28 +225,26 @@
     </div>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Legal Pages</h3>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms and Conditions</a></li>
-                    <li><a href="#">Disclaimer</a></li>
-                    <li><a href="#">Security & Customer Protection</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Customer Care & Contact</h3>
-                <p><strong>Customer Service:</strong> 19900</p>
-                <p><strong>Landline:</strong> 0223456789</p>
-                <p><strong>Official Email:</strong> info@nbk.com</p>
-            </div>
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Legal Pages</h3>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms &amp; Conditions</a></li>
+                <li><a href="#">Disclaimer</a></li>
+                <li><a href="#">Customer Security</a></li>
+            </ul>
         </div>
-        <div class="footer-bottom">
-            <p>All Rights Reserved © National Bank 2026</p>
+        <div class="footer-section">
+            <h3>Customer Care &amp; Contact</h3>
+            <p><strong>Customer Care:</strong> 19900</p>
+            <p><strong>Landline:</strong> 0223456789</p>
+            <p><strong>Official Email:</strong> info@nbk.com</p>
         </div>
-    </footer>
+    </div>
+    <div class="footer-bottom"><p>All rights reserved © National Bank Egypt 2026</p></div>
+</footer>
 
     <!-- Scripts at the end of body -->
     <script>
