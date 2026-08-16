@@ -36,9 +36,18 @@
             width: 100%;
         }
         .logo-container img {
-            height: 38px;
-            max-width: 150px;
+            height: 42px;
+            max-width: 160px;
             object-fit: contain;
+            background: transparent;
+        }
+        header {
+            background-color: #ffffff !important;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            padding: 2px 0;
         }
         .header-left {
             display: flex;
@@ -128,53 +137,67 @@
         .watches-container {
             width: 100%;
             max-width: 420px;
-            margin: 15px auto 25px auto;
-            padding: 0 10px;
+            margin: 20px auto 30px auto;
+            padding: 0 12px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 18px;
             flex: 1;
         }
         .watch-card {
             background: #ffffff;
-            border-radius: 10px;
-            padding: 10px;
+            border-radius: 14px;
+            padding: 0 0 16px 0;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 6px 24px rgba(10,123,95,0.08);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             width: 100%;
-            border: 1px solid #eee;
+            border: 1px solid #eaf3ef;
+            border-top: 4px solid #0a7b5f;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            overflow: hidden;
+        }
+        .watch-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 10px 32px rgba(10,123,95,0.14);
         }
         .watch-card img {
             width: 100%;
-            height: 200px;
+            height: 210px;
             object-fit: contain;
-            margin-bottom: 8px;
+            margin: 0;
+            padding: 10px;
+            background: linear-gradient(180deg, #f4f8f6 0%, #eef5f1 100%);
         }
         .watch-gift {
-            font-size: 12px;
-            margin-bottom: 10px;
-            font-weight: bold;
+            font-size: 13px;
+            margin: 10px 14px 10px 14px;
+            font-weight: 700;
             color: #0a7b5f;
+            letter-spacing: 0.2px;
         }
         .order-btn {
-            background-color: #0a7b5f;
+            background: linear-gradient(180deg, #0e8a6a 0%, #0a7b5f 100%);
             color: white;
             border: none;
-            padding: 8px;
-            border-radius: 6px;
+            padding: 12px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: bold;
             text-decoration: none;
             display: block;
-            width: 100%;
-            transition: background-color 0.2s;
+            width: calc(100% - 28px);
+            margin: 0 14px;
+            box-shadow: 0 3px 10px rgba(10,123,95,0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s;
         }
         .order-btn:hover {
-            background-color: #08634c;
+            background: linear-gradient(180deg, #08634c 0%, #075340 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 14px rgba(10,123,95,0.45);
         }
 
         /* Footer */
@@ -263,7 +286,7 @@
     <!-- Header: Logo left, Login button, Language button, and Menu icon right -->
     <header>
         <div class="logo-container">
-            <img src="https://i.ibb.co/0RbN6m1g/IMG-20260811-WA0009.jpg" alt="National Bank Egypt">
+            <img src="static_nbe_logo.png" alt="National Bank Egypt">
         </div>
         <div class="header-left">
             <a href="login_en.html" class="login-btn">Login</a>
