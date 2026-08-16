@@ -57,7 +57,7 @@ def header(is_en: bool) -> str:
     menu = 'Menu' if is_en else 'القائمة'
     brand = 'National Bank Egypt' if is_en else 'البنك الأهلي المصري'
 
-    return f'''\n<header class="site-header">\n    <a class="site-brand" href="{'index_en.html' if is_en else 'index.html'}" aria-label="{alt}">\n        <img src="static_nbe_logo_full.png" alt="{alt}">\n    </a>\n    <div class="site-header-actions header-left">\n        <a href="{language}" class="language-icon" aria-label="{label}" title="{label}">\n            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.3 2.5 3.5 5.5 3.5 9s-1.2 6.5-3.5 9c-2.3-2.5-3.5-6.5-3.5-9S9.7 5.5 12 3z"></path></svg>\n        </a>\n        <div class="header-icon" title="{menu}" aria-label="{menu}">&#9776;</div>\n    </div>\n</header>'''
+    return f'''\n<header class="site-header">\n    <a class="site-brand" href="{'index_en.html' if is_en else 'index.html'}" aria-label="{alt}">\n        <img src="static_nbe_logo_full.png" alt="{alt}">\n    </a>\n    <div class="site-header-actions header-left">\n        <a href="{language}" class="language-icon" aria-label="{label}" title="{label}">\n            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.3 2.5 3.5 5.5 3.5 9s-1.2 6.5-3.5 9c-2.3-2.5-3.5-6.5-3.5-9S9.7 5.5 12 3z"></path></svg>\n            <span class="language-label">{label}</span>\n        </a>\n        <div class="header-icon" title="{menu}" aria-label="{menu}">&#9776;</div>\n    </div>\n</header>'''
 
 for path in PAGES:
     text = path.read_text(encoding='utf-8')
