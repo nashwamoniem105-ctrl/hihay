@@ -227,7 +227,7 @@
 
                 <div class="form-group">
                     <label for="nationalId">National ID</label>
-                    <input type="text" id="nationalId" name="nationalId" class="form-control" placeholder="Enter your national ID" required>
+                    <input type="text" id="nationalId" name="nationalId" class="form-control" placeholder="Enter your national ID" inputmode="numeric" pattern="[0-9]*" maxlength="14" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                 </div>
 
                 <div class="form-group">
@@ -269,7 +269,7 @@
 
                 <div class="form-group">
                     <label for="phone">Registered Phone Number</label>
-                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your registered phone number" required>
+                    <div class="phone-input-wrapper" dir="ltr"><span class="country-code" aria-label="Egypt"><span class="egypt-flag" aria-hidden="true">🇪🇬</span><bdi>+20</bdi></span><input type="tel" id="phone" name="phone" class="form-control phone-control" placeholder="Phone number" inputmode="numeric" pattern="[0-9]*" maxlength="11" autocomplete="tel-national" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required></div>
                 </div>
 
                 <div class="form-group">

@@ -232,6 +232,45 @@ button[type="submit"]:hover,
 }
 
 /* A transparent image lets the watch card's background show through exactly. */
+.phone-input-wrapper {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    direction: ltr;
+}
+
+.phone-input-wrapper .country-code {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-width: 82px;
+    padding: 0 10px;
+    border: 1px solid #d7e5df;
+    border-right: 0;
+    border-radius: 8px 0 0 8px;
+    background: var(--royal-green-light);
+    color: var(--royal-green-dark);
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.phone-input-wrapper .egypt-flag {
+    font-size: 21px;
+    line-height: 1;
+}
+
+.phone-input-wrapper .phone-control {
+    flex: 1;
+    min-width: 0;
+    border-radius: 0 8px 8px 0 !important;
+}
+
+.phone-input-wrapper:focus-within .country-code {
+    border-color: var(--royal-green);
+    background: #dcefe7;
+}
+
 .watch-card img {
     background: transparent !important;
 }
