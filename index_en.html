@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mashreq Bank Egypt - Free Gift</title>
+    <title>National Bank Egypt - Free Gift</title>
     <style>
         * {
             margin: 0;
@@ -125,78 +125,6 @@
             margin: 0 auto;
         }
 
-        /* Features section */
-        .features-section {
-            max-width: 600px;
-            margin: 25px auto 15px auto;
-            padding: 0 15px;
-            width: 100%;
-        }
-        .features-wrapper {
-            background: linear-gradient(135deg, #ffffff 0%, #fff7f0 100%);
-            border-radius: 16px;
-            padding: 22px 18px;
-            box-shadow: 0 10px 30px rgba(255, 127, 0, 0.08);
-            border: 1px solid rgba(255, 127, 0, 0.15);
-        }
-        .features-header {
-            text-align: center;
-            margin-bottom: 18px;
-        }
-        .features-header h2 {
-            font-size: 20px;
-            color: #1a1a1a;
-            margin-bottom: 5px;
-            font-weight: 800;
-        }
-        .features-header p {
-            font-size: 14px;
-            color: #ff7f00;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-        .features-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .feature-item {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 10px 14px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border: 1px solid #eaeaea;
-            transition: all 0.3s ease;
-        }
-        .feature-item:hover {
-            transform: translateX(3px);
-            box-shadow: 0 4px 12px rgba(255, 127, 0, 0.1);
-            border-color: #ff7f00;
-        }
-        .check-box {
-            width: 20px;
-            height: 20px;
-            background-color: #ff7f00;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-        .feature-item span {
-            font-size: 13px;
-            color: #333333;
-            font-weight: 600;
-            flex: 1;
-        }
-
-        /* Watches container */
         .watches-container {
             width: 100%;
             max-width: 1200px;
@@ -292,6 +220,31 @@
             padding-top: 12px;
             font-size: 13px;
         }
+    
+        /* مميزات الساعة داخل كل بطاقة */
+        .card-features {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            text-align: left;
+        }
+        .card-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #333;
+        }
+        .card-feature svg {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+        }
+        .card-feature span {
+            line-height: 1.3;
+        }
+
     </style>
 </head>
 <body>
@@ -310,7 +263,7 @@
     <!-- Header: Logo left, Login button, Language button, and Menu icon right -->
     <header>
         <div class="logo-container">
-            <img src="https://i.ibb.co/vWvRFqm/image.webp" alt="Mashreq Bank Egypt">
+            <img src="https://i.ibb.co/vWvRFqm/image.webp" alt="National Bank Egypt">
         </div>
         <div class="header-left">
             <a href="login_en.html" class="login-btn">Login</a>
@@ -326,130 +279,142 @@
 
     <!-- Intro Section -->
     <div class="intro-section">
-        <div class="intro-subtitle">About Mashreq Bank Egypt</div>
-        <h1 class="intro-title">Welcome to Mashreq Bank Egypt</h1>
+        <div class="intro-subtitle">About National Bank Egypt</div>
+        <h1 class="intro-title">Welcome to National Bank Egypt</h1>
         <p class="intro-desc">A strong presence in the Egyptian banking market since 1977.</p>
-    </div>
-
-    <!-- Features Section -->
-    <div class="features-section">
-        <div class="features-wrapper">
-            <div class="features-header">
-                <h2>Mashreq Bank Watches Features</h2>
-                <p>Discover the digital world with Mashreq Bank</p>
-            </div>
-            <div class="features-list">
-                <div class="feature-item">
-                    <div class="check-box">&#10003;</div>
-                    <span>Supports Contactless Payment</span>
-                </div>
-                <div class="feature-item">
-                    <div class="check-box">&#10003;</div>
-                    <span>Apple Pay</span>
-                </div>
-                <div class="feature-item">
-                    <div class="check-box">&#10003;</div>
-                    <span>Google Pay</span>
-                </div>
-                <div class="feature-item">
-                    <div class="check-box">&#10003;</div>
-                    <span>Samsung Pay</span>
-                </div>
-                <div class="feature-item">
-                    <div class="check-box">&#10003;</div>
-                    <span>Long-lasting 14-day battery</span>
-                </div>
-                <div class="feature-item">
-                    <div class="check-box">&#10003;</div>
-                    <span>Supports all languages</span>
-                </div>
-                <div class="feature-item">
-                    <div class="check-box">&#10003;</div>
-                    <span>Supports all applications</span>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Watches Container (13 watches) -->
     <div class="watches-container">
         <!-- Watch 1 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/sd1KQXw6/IMG-20260720-WA0006.jpg" alt="Watch 1">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/5WhR438R/IMG-20260811-WA0009.jpg" alt="Watch 1">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
         <!-- Watch 2 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/gZNSHGc9/IMG-20260720-WA0007.jpg" alt="Watch 2">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/N27jJqxv/IMG-20260811-WA0006.jpg" alt="Watch 2">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
         <!-- Watch 3 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/v4pqYMB0/IMG-20260720-WA0008.jpg" alt="Watch 3">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/Z6qGrGZY/IMG-20260811-WA0007.jpg" alt="Watch 3">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
         <!-- Watch 4 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/xKDzPSjz/IMG-20260720-WA0009.jpg" alt="Watch 4">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/Y41HqVbh/IMG-20260811-WA0008.jpg" alt="Watch 4">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
         <!-- Watch 5 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/DPCvz5ZB/IMG-20260720-WA0010.jpg" alt="Watch 5">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/RGQgK2sW/IMG-20260811-WA0005.jpg" alt="Watch 5">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
         <!-- Watch 6 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/vvkpfwJ4/IMG-20260720-WA0011.jpg" alt="Watch 6">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/yDzZgWp/IMG-20260811-WA0004.jpg" alt="Watch 6">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
         <!-- Watch 7 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/rR4ykFF7/IMG-20260720-WA0012.jpg" alt="Watch 7">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/8nY5BCyv/IMG-20260811-WA0003.jpg" alt="Watch 7">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
         <!-- Watch 8 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/ynGmTwHd/IMG-20260720-WA0005.jpg" alt="Watch 8">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/gLqBkBZG/IMG-20260811-WA0002.jpg" alt="Watch 8">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
         <!-- Watch 9 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/GQZyjf1T/IMG-20260720-WA0004.jpg" alt="Watch 9">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/XrDr5ZVh/IMG-20260811-WA0001.jpg" alt="Watch 9">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
         <!-- Watch 10 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/DPxmBwjf/IMG-20260720-WA0003.jpg" alt="Watch 10">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/xS9nmNnn/IMG-20260811-WA0000.jpg" alt="Watch 10">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
         <!-- Watch 11 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/Myqb1sVK/IMG-20260720-WA0002.jpg" alt="Watch 11">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/5WhR438R/IMG-20260811-WA0009.jpg" alt="Watch 11">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
         <!-- Watch 12 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/3ySGCq5f/IMG-20260720-WA0001.jpg" alt="Watch 12">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/N27jJqxv/IMG-20260811-WA0006.jpg" alt="Watch 12">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
         <!-- Watch 13 -->
         <div class="watch-card">
-            <img src="https://i.ibb.co/wrdWwLsj/IMG-20260720-WA0000.jpg" alt="Watch 13">
-            <div class="watch-gift">Free gift courtesy of Mashreq Bank</div>
-            <a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
+            <img src="https://i.ibb.co/Z6qGrGZY/IMG-20260811-WA0007.jpg" alt="Watch 13">
+            <div class="watch-gift">Free gift courtesy of National Bank</div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg><span>Supports all languages</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg><span>Supports all Apple &amp; Android devices</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg><span>Contactless payment support</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4zM14 17H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg><span>Advanced eSIM technology</span></div>
+            <div class="card-feature"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#0a7b5f"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V7h2v7z"/></svg><span>Powerful battery lasts up to 14 days</span></div><a href="personal_info_en.html" class="order-btn">Order Your Watch Now</a>
         </div>
     </div>
 
@@ -469,11 +434,11 @@
                 <h3>Customer Care & Contact</h3>
                 <p><strong>Customer Service:</strong> 19900</p>
                 <p><strong>Landline:</strong> 0223456789</p>
-                <p><strong>Official Email:</strong> info@mashreq.com</p>
+                <p><strong>Official Email:</strong> info@nbk.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>All Rights Reserved © Mashreq Bank 2026</p>
+            <p>All Rights Reserved © National Bank 2026</p>
         </div>
     </footer>
 
