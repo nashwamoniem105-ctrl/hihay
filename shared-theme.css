@@ -45,8 +45,8 @@ header,
 .logo-container img,
 .site-brand img {
     display: block !important;
-    width: 178px !important;
-    height: 58px !important;
+    width: 230px !important;
+    height: 66px !important;
     max-width: 44vw !important;
     object-fit: contain !important;
     object-position: center !important;
@@ -72,6 +72,44 @@ header,
 .header-icon {
     color: var(--royal-green-dark) !important;
     font-size: 21px;
+}
+
+.lang-btn,
+.login-btn,
+.site-header .lang-btn,
+.site-header .login-btn {
+    border-radius: 8px !important;
+    font-weight: 800 !important;
+    transition: all 0.2s ease;
+}
+
+.language-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    color: var(--royal-green-dark);
+    border: 1px solid rgba(11, 107, 79, 0.22);
+    border-radius: 50%;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.language-icon svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+}
+
+.language-icon:hover {
+    color: #fff;
+    background: var(--royal-green);
+    border-color: var(--royal-green);
+    transform: translateY(-1px);
 }
 
 .lang-btn,
@@ -198,8 +236,8 @@ button[type="submit"]:hover,
     }
     .logo-container img,
     .site-brand img {
-        width: 142px !important;
-        height: 52px !important;
+        width: 190px !important;
+        height: 58px !important;
         max-width: 42vw !important;
     }
     .brand-name {

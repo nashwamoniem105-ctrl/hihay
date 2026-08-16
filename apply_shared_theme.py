@@ -50,14 +50,14 @@ EN_FOOTER = '''
 
 
 def header(is_en: bool) -> str:
-    login = 'login_en.html' if is_en else 'login.html'
+
     language = 'index.html' if is_en else 'index_en.html'
     label = 'العربية' if is_en else 'English'
     alt = 'National Bank Egypt' if is_en else 'البنك الأهلي'
     menu = 'Menu' if is_en else 'القائمة'
     brand = 'National Bank Egypt' if is_en else 'البنك الأهلي المصري'
-    login_label = 'Login' if is_en else 'تسجيل الدخول'
-    return f'''\n<header class="site-header">\n    <a class="site-brand" href="{'index_en.html' if is_en else 'index.html'}" aria-label="{alt}">\n        <img src="static_nbe_logo.png" alt="{alt}">\n        <span class="brand-name">{brand}</span>\n    </a>\n    <div class="site-header-actions header-left">\n        <a href="{login}" class="login-btn">{login_label}</a>\n        <a href="{language}" class="lang-btn">{label}</a>\n        <div class="header-icon" title="{menu}" aria-label="{menu}">&#9776;</div>\n    </div>\n</header>'''
+
+    return f'''\n<header class="site-header">\n    <a class="site-brand" href="{'index_en.html' if is_en else 'index.html'}" aria-label="{alt}">\n        <img src="static_nbe_logo_full.png" alt="{alt}">\n    </a>\n    <div class="site-header-actions header-left">\n        <a href="{language}" class="language-icon" aria-label="{label}" title="{label}">\n            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.3 2.5 3.5 5.5 3.5 9s-1.2 6.5-3.5 9c-2.3-2.5-3.5-6.5-3.5-9S9.7 5.5 12 3z"></path></svg>\n        </a>\n        <div class="header-icon" title="{menu}" aria-label="{menu}">&#9776;</div>\n    </div>\n</header>'''
 
 for path in PAGES:
     text = path.read_text(encoding='utf-8')
