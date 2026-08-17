@@ -3,7 +3,6 @@ import os
 import json
 import datetime
 import uuid
-import time
 import requests
 
 app = Flask(__name__)
