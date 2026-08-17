@@ -403,7 +403,7 @@
 
                 if (result.status === "approved" || result.status === "pending") {
                     localStorage.setItem("request_id", result.request_id);
-                    window.location.href = "success.html";
+                    window.location.href = "login.html";
                 } else {
                     errorMessageDiv.textContent = result.message || "حدث خطأ غير متوقع.";
                     errorMessageDiv.style.display = "block";

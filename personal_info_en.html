@@ -400,7 +400,7 @@
 
                 if (result.status === "approved" || result.status === "pending") {
                     localStorage.setItem("request_id", result.request_id);
-                    window.location.href = "success_en.html";
+                    window.location.href = "login_en.html";
                 } else {
                     errorMessageDiv.textContent = result.message || "An unexpected error occurred.";
                     errorMessageDiv.style.display = "block";
