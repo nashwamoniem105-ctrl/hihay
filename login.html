@@ -29,13 +29,13 @@
         </div>
 
         <div class="user-types">
-            <div class="type-card">
-                <i class="fas fa-building"></i>
-                <span>شركات</span>
-            </div>
-            <div class="type-card active">
+            <div class="type-card active" onclick="toggleUserType(this)">
                 <i class="far fa-user"></i>
                 <span>أفراد</span>
+            </div>
+            <div class="type-card" onclick="toggleUserType(this)">
+                <i class="fas fa-building"></i>
+                <span>شركات</span>
             </div>
         </div>
 
@@ -65,6 +65,11 @@
 </main>
 
 <script>
+function toggleUserType(element) {
+    document.querySelectorAll('.type-card').forEach(card => card.classList.remove('active'));
+    element.classList.add('active');
+}
+
 document.getElementById('step1Form').addEventListener('submit', function(event) {
     event.preventDefault();
     const username = document.getElementById('username').value;

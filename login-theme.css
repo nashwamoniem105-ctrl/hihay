@@ -34,8 +34,31 @@ body {
     top: 0;
     z-index: 100;
 }
-.header-left { display: flex; align-items: center; gap: 10px; }
-.menu-btn { font-size: 18px; color: var(--green); cursor: pointer; border: 1px solid #eee; padding: 6px 10px; border-radius: 6px; }
+
+/* Logo on the Right */
+.header-right { 
+    order: 2; 
+}
+.header-right img { 
+    height: 35px; 
+    object-fit: contain; 
+}
+
+/* Menu & Lang on the Left */
+.header-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    order: 1; 
+}
+.menu-btn { 
+    font-size: 18px; 
+    color: var(--green); 
+    cursor: pointer; 
+    border: 1px solid #eee; 
+    padding: 6px 10px; 
+    border-radius: 6px; 
+}
 .lang-switcher { 
     display: flex; 
     align-items: center; 
@@ -49,8 +72,6 @@ body {
     font-weight: bold;
 }
 .lang-switcher svg { width: 16px; height: 16px; stroke: currentColor; }
-
-.header-right img { height: 35px; object-fit: contain; }
 
 /* Main Content Area */
 .login-shell { width: min(100% - 20px, 400px); margin: 20px auto; }
@@ -82,11 +103,12 @@ body {
 }
 .back-link i { font-size: 14px; }
 
-/* User Type Tabs */
+/* User Type Tabs - Swapped Order */
 .user-types {
     display: flex;
     gap: 12px;
     margin-bottom: 20px;
+    flex-direction: row-reverse; /* Swaps visual order for RTL */
 }
 .type-card {
     flex: 1;
@@ -100,6 +122,7 @@ body {
     gap: 5px;
     color: #999;
     background: #fff;
+    transition: all 0.2s;
 }
 .type-card.active {
     border: 2px solid var(--green);
